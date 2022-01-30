@@ -1,0 +1,24 @@
+comandos para instalar, desisntalar y actualizar paquetes
+
+* npm install
+* npm unistall
+* npm update
+
+como primer paso de debe inicar el packaje.json
+* npm init 
+se deben de ir llenando los datos que se solicitan como la version, descripcio, punto de incio, licencia, test command, repositorio etc.
+se puede agregar la bandera -y para crear con los valores predeterminado
+
+cuando se instala un paquete se colocan en las dependencias 
+se agrega un archivo que se llama package-lock.json
+y tambien se agregan la carpeta de node_modules
+
+cuando se instala un paquete pero no la queremos como dependencias para el modo produccion se coloca la sigueinte bandera
+* npm install paquete --save-dev 
+esto crea un espacio en el packege.json llamado 
+- devDependecies
+
+en caso de requerir una version especifica de un paquete
+* npm install paquete@version -> ejemplo npm install paquete@0.0.1
+
+
