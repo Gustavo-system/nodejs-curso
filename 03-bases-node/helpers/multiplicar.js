@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const crearArchivo = async ( numero = 5 ) => {
+const crearArchivo = async ( numero = 5, listar ) => {
 
     // CON ASYNC Y AWAIT
     try {
@@ -10,9 +10,12 @@ const crearArchivo = async ( numero = 5 ) => {
             salida += `${numero} x ${i} = ${numero * i}\n`;
         }
 
-        console.log(salida)
+        if( listar ){
+            console.log(salida)
+        }
 
-        fs.writeFileSync(`Tabla-${numero}.txt`, salida);
+
+        fs.writeFileSync(`./archivos/Tabla-${numero}.txt`, salida);
 
         return `tabla-${numero}.txt`
 
@@ -68,6 +71,7 @@ module.exports = {
     // esto en redundante para js, se puede hacer pero solo en caso de que
     // se renombre la funcion a exportar
     // crearArchivo : crearArchivo
+    // nuevo_nombre : funcion o valor
 
     // esto es lo mimso que la parte de arriba pero simplificada
     crearArchivo
