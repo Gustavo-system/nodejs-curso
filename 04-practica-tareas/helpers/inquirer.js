@@ -9,7 +9,7 @@ const opcionesMenu = [
         choices: [
             {
                 value: 1,
-                name: '1. Crear tarea'
+                name: `${'1.'.red} Crear tarea`
             },
             {
                 value: 2,
@@ -42,7 +42,7 @@ const opcionesMenu = [
 const inquirerMenu = async () => {
 
     console.clear();
-    console.log('============= Menu ============= \n'.blue);
+    console.log('============= APP Tareas ============= \n'.yellow);
     const { opciones } = await inquirer.prompt(opcionesMenu);
     return opciones;
 
@@ -53,7 +53,7 @@ const pausa = async () => {
     const question = [{
         type: 'input',
         name: 'enter',
-        message: `\nPresione ${'Enter'.green} para continuar`
+        message: `Presione ${'Enter'.green} para continuar`
     }]
 
     // const { enter } = await inquirer.prompt(question);
@@ -69,9 +69,9 @@ const leerInput = async ( message ) => {
         name: 'desc',
         message,
         validate(value){
-            if(value.lenth == 0){
-                return 'Por faavor ingrese un valor';
-            }
+            if (value.lenth == 0) {
+			return 'Por faavor ingrese un valor';
+		}
             return true;
         }
     }]
@@ -81,8 +81,49 @@ const leerInput = async ( message ) => {
 
 }
 
+const listarTareasBorrar = async ( tareas )  => {
+
+    const choices = tareas.map((tarea, index) => {
+        return {
+            value: tarea.id,
+            name: `${index+1} ${tarea.desc}`
+        }
+    });
+
+    choices.unshift({
+        value: 0,
+        name: '0. Cancelar'
+    });
+
+    const question = [
+        {
+            type: 'list',
+            name: 'id',
+            message: 'Seleccione la tarea a eliminar',
+            choices
+        }
+    ];
+
+    const { id } = await inquirer.prompt(question);
+    return id;
+
+}
+
+const confirmar = async ( msg ) => {
+    const question = [{
+        type: 'confirm',
+        name: 'ok',
+        message: msg
+    }];
+
+    const { ok } = await inquirer.prompt(question);
+    return ok;
+}
+
 module.exports = {
     inquirerMenu,
     pausa,
-    leerInput
+    leerInput,
+    listarTareasBorrar,
+    confirmar
 }
