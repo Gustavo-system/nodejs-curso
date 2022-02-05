@@ -61,7 +61,7 @@ class Tareas{
         // console.log(estado)
         let tareas = [];
         estado
-            ? tareas = this.listarTareasArr.filter(tarea => tarea.completadoEn != null) 
+            ? tareas = this.listarTareasArr.filter(tarea => tarea.completadoEn != null)
             : tareas = this.listarTareasArr.filter(tarea => tarea.completadoEn == null);
 
         tareas.forEach((tarea, index) => {
@@ -80,6 +80,27 @@ class Tareas{
         delete this._listado[id];
         console.log('Tarea borrada correctamente');
     }
+
+    completarTareas(ids_tareas){
+
+        ids_tareas.forEach( tarea => {
+
+            const old_tareas = this._listado[tarea];
+
+            if( !old_tareas.completadoEn ){
+                old_tareas.completadoEn = new Date().toISOString();
+            }
+        });
+
+        this.listarTareasArr.forEach( tarea => {
+            if( !ids_tareas.includes(tarea.id) ){
+                // const tareas = this._listado[id];
+                // tarea.completadoEn = null;
+                this._listado[tarea.id].completadoEn = null;
+            }
+        });
+    }
+
 
 }
 

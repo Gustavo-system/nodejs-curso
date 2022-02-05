@@ -1,7 +1,7 @@
 require('colors');
 
 const { guardadDB, leerDB } = require('./helpers/crud');
-const { inquirerMenu, pausa, leerInput, listarTareasBorrar, confirmar } = require('./helpers/inquirer');
+const { inquirerMenu, pausa, leerInput, listarTareasBorrar, confirmar, listarTareasCompletar } = require('./helpers/inquirer');
 const Tareas = require('./models/tareas');
 // const { menu, pausa } = require('./helpers/mensajes');
 
@@ -39,20 +39,28 @@ const main = async () => {
                 const desc = await leerInput('Descripcion:');
                 tareas.post(desc);
                 break;
+
             case 2:
                 // console.log( tareas._listado );
                 // console.log( tareas.listarTareasArr );
                 tareas.listarTodasTareas(tareasDB);
                 break;
+
             case 3:
                 tareas.listarTareasByEstatus(true);
                 break;
+
             case 4:
                 tareas.listarTareasByEstatus(false);
                 break;
+
             case 5:
-                console.log('Marcar tareas completadas');
+                // console.log('Marcar tareas completadas');
+                const ids = await listarTareasCompletar(tareas.listarTareasArr);
+                // console.log(ids);
+                tareas.completarTareas(ids);
                 break;
+
             case 6:
                 const id = await listarTareasBorrar(tareas.listarTareasArr);
                 // console.log({ id })

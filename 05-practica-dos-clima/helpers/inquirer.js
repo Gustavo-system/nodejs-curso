@@ -1,10 +1,7 @@
 const inquirer = require('inquirer');
 require('colors');
 
-/**
- * ESTE MENU ESTA VALIDADO EN QUE SIEMPRE DEBE EXISITIR LA SELECCION DE UN ELEMENTO 
- * YA QUE SOLO SON LAS OPCIONES QUE SE MUESTRAN Y SE DEBE SELECCIONAR
- */
+
 const opcionesMenu = [
     {
         type: 'list',
@@ -13,32 +10,16 @@ const opcionesMenu = [
         choices: [
             {
                 value: 1,
-                name: `${'1.'.red} Crear tarea`
+                name: `${'1.'.red} Buscar ciudad`
             },
             {
                 value: 2,
-                name: '2. Listar tareas'
-            },
-            {
-                value: 3,
-                name: '3. Listar tareas completadas'
-            },
-            {
-                value: 4,
-                name: '4. Listar tareas pendientes'
-            },
-            {
-                value: 5,
-                name: '5. Completar tarea(s)'
-            },
-            {
-                value: 6,
-                name: '6. Borrar tarea'
+                name: `${'2.'.red} Historial`
             },
             {
                 value: 0,
-                name: '0. Salir'
-            },
+                name: `${'0.'.red} Salir`
+            }
         ]
     }
 ]
@@ -46,7 +27,7 @@ const opcionesMenu = [
 const inquirerMenu = async () => {
 
     console.clear();
-    console.log('============= APP Tareas ============= \n'.yellow);
+    console.log('============= APP Clima ============= \n'.yellow);
     const { opciones } = await inquirer.prompt(opcionesMenu);
     return opciones;
 
@@ -60,9 +41,7 @@ const pausa = async () => {
         message: `Presione ${'Enter'.green} para continuar`
     }]
 
-    // const { enter } = await inquirer.prompt(question);
     await inquirer.prompt(question);
-    // return enter;
 
 }
 
@@ -70,7 +49,7 @@ const leerInput = async ( message ) => {
 
     const question = [{
         type: 'input',
-        name: 'desc',
+        name: 'ciudad',
         message,
         validate(value){
             if(value.length == 0){
@@ -80,8 +59,8 @@ const leerInput = async ( message ) => {
         }
     }]
 
-    const { desc } = await inquirer.prompt(question);
-    return desc;
+    const { ciudad } = await inquirer.prompt(question);
+    return ciudad;
 
 }
 
