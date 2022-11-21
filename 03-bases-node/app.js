@@ -5,7 +5,6 @@ const { crearArchivo } = require('./helpers/multiplicar');
 // PARA HACER APLICACIONES DE CONSOLA EXISTE UN PAQUETE MUY UTILIZADO LLAMDO YARGS
 // CON EL PODEMOS ACCEDER A LAS BANDERAS QUE MANDEN POR CONSOLA DE UNA MANERA MÁS SENCILLA Y PRACTICA
 
-
 // const argv = require('yargs').argv;
 // const argv = require('yargs')
 // .option('b', {
@@ -25,9 +24,8 @@ const { crearArchivo } = require('./helpers/multiplicar');
 //     return true;
 // }).argv;
 
-// AL USAR YARGS STE ES UN CODIGO QUE NO DEBERIA IR EN ESTE ARCHIVO, POR LO CUAL SE SEPARA A UNO NUEVO E INDEPENDIENTE 
+// AL USAR YARGS STE ES UN CODIGO QUE NO DEBERIA IR EN ESTE ARCHIVO, POR LO CUAL SE SEPARA A UNO NUEVO E INDEPENDIENTE
 const argv = require('./config/yargs');
-
 
 // SIRVE PARA LIMPIAR LA CONSOLA Y MOSTRAR UN CONTENIDO MAS LIMPIO
 console.clear();
@@ -38,7 +36,7 @@ console.clear();
 // console.log( process.argv );
 
 // SE HACE UNA IMPRESION DE LOS ARGUMENTOS QUE SE MANDAN POR CONSOLA
-console.log( argv );
+console.log(argv);
 // console.log( argv.b );
 // console.log( argv.l );
 
@@ -46,7 +44,6 @@ console.log( argv );
 //     .then(archivo => console.log(archivo, 'creada'))
 //     .catch(err => console.log(err));
 
-crearArchivo( argv.base, argv.listar )
-    .then(archivo => console.log(archivo, 'creada'))
-    .catch(err => console.log(err));
-
+crearArchivo(argv.base, argv.listar)
+	.then((archivo) => console.log(archivo, 'creada'))
+	.catch((err) => console.log(err));
