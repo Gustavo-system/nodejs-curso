@@ -4,13 +4,12 @@ const SpiderMan = {
 	poder: 'Sentido aracnido',
 	getNombre: function () {
 		return `${this.nombre} ${this.apellido}`;
-	}
+	},
 	// lo de arriba tambien se puede simplificar de la siguiente manera, quitando la palabra de function
 	// getNombre () {
 	// return `${this.nombre} ${this.apellido}`;
 	// }
-
-}
+};
 
 // console.log( SpiderMan.getNombre() );
 
@@ -23,19 +22,17 @@ const { nombre, apellido, poder } = SpiderMan;
 
 // se puede desestructurar dentro de los argumentos de una funcion
 function imprimeHeroe(heroe) {
-
 	const { nombre, apellido, edad = 0 } = heroe;
 	console.log(nombre, apellido, edad);
-
-}
-
-function imprimeHeroe({ nombre, apellido, edad }) {
-
-	console.log(nombre, apellido, edad);
-
 }
 
 imprimeHeroe(SpiderMan);
+
+function imprimeHeroeDesestructurado({ nombre, apellido, edad }) {
+	console.log(nombre, apellido, edad);
+}
+
+imprimeHeroeDesestructurado(SpiderMan);
 
 // Desestructuracion de arrays
 const heroes = ['Deadpool', 'SpiderMan', 'Hulk'];
