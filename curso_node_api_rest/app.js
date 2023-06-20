@@ -17,11 +17,24 @@ const port = process.env.PORT || 3000
 // utilizamos los cors para poder tener accedos desde donde sea
 app.use(cors())
 
+/**
+ * hacemos uso de las rutas
+ * si lo importamos asi se crearan muchas lineas en este archivo principal
+ * app.use("/api/v1", require("./routes/users"))
+ * /
+
+/**
+ * Se crea un archivo index.js en la carpeta routes para importar todas las rutas
+ * y solo importar una linea en el server
+ * 
+ * NOTA: cabe mencionar que el nombre del archivo debe ser el mismo que el path de la ruta
+ */
+app.use("/api/v1", require("./routes"))
+
+dbConnection()
 
 // corremos el servidor
 app.listen(port, () => {
 	// mosttramos un mensaje en consola si el servidor se inicio correctamente
 	console.log(`Servidor escuchando por el puesto ${port}`)
 })
-
-dbConnection()
