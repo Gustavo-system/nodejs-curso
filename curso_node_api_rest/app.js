@@ -1,6 +1,7 @@
 // importamos los paquetes que se requieren
 const expres = require("express")
 const cors = require("cors")
+const dbConnection = require("./config/mongo")
 
 // cargamos las variables de entorno
 require("dotenv").config()
@@ -22,3 +23,5 @@ app.listen(port, () => {
 	// mosttramos un mensaje en consola si el servidor se inicio correctamente
 	console.log(`Servidor escuchando por el puesto ${port}`)
 })
+
+dbConnection()
