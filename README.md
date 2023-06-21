@@ -23,3 +23,11 @@ npm i paquete paquete -S
 
 ```
 
+- Se crean comandos para ejecutar el proyecto
+```
+"start": "node ./app.js",
+"dev": "nodemon ./app.js"
+
+npm run start
+npm run dev
+```
