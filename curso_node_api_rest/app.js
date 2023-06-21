@@ -31,10 +31,10 @@ app.use(cors())
  */
 app.use("/api/v1", require("./routes"))
 
-dbConnection()
-
 // corremos el servidor
 app.listen(port, () => {
 	// mosttramos un mensaje en consola si el servidor se inicio correctamente
 	console.log(`Servidor escuchando por el puesto ${port}`)
 })
+
+dbConnection()

@@ -2,10 +2,10 @@ const mongoose = require("mongoose")
 
 const dbConnection = async () => {
 	// se obtiene la cadena de conexcion desde las variables de entorno
-	const dbUri = process.env.DB_URI
+	const DB_URI = process.env.DB_URI
 	// se crea la funcion para instanciar la conexion a la base de datos
 	await mongoose.connect(
-	dbUri,
+	DB_URI,
 	{
 		useNewUrlParser: true, 
 		useUnifiedTopology: true
