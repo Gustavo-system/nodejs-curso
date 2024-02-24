@@ -5,7 +5,9 @@
 
 const express = require("express")
 // modulo propio de node
-const fs = require("fs") 
+const fs = require("fs")
+// importamos un coustom middleware para validar el header
+const { coustomHeader } = require("../middlewares/middleware")
 
 const router = express.Router()
 
@@ -26,7 +28,8 @@ const filter = fs.readdirSync(PATH_ROUTES).filter((file) => {
 	const name = removeExtencion(file)
 	if(name !== "index"){
 		// se agrega el endpoint, se requerie el archivo
-		router.use(`/${name}`, require(`./${file}`))
+		// se usa un middleware, aqui se usara para todas las rutas existentes
+		router.use(`/${name}`, coustomHeader, require(`./${file}`))
 	}
 })
 
