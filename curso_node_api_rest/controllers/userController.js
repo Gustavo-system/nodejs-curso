@@ -1,16 +1,16 @@
-const { userModule } = require("../models")
+const { userModel } = require("../models")
 
 
 const getUsers = async (request, response) => {
 	// otra forma de realizar la logica
-	// userModule.find({}).then((resp) => {
+	// userModel.find({}).then((resp) => {
 	// 	console.log("response del api", resp)
 	// 	return response.send(resp)
 	// }).catch(err => console.log("problemas al realizar la consulta"))
 
 	// obtenemos todos los registros con find({}) que es propio de mongoose
 	// forma corta
-	const data = await userModule.find({})
+	const data = await userModel.find({})
 
 	console.log("consulta", data)
 	return response.send({ data })
@@ -24,7 +24,7 @@ const createUsers = async (request, response) => {
 	// obtenemos por medio de desestructuracion el body del request
 	const { body } = request
 	console.log("datos obtenidos en el body: ", body)
-	const responseData = await userModule.create(body)
+	const responseData = await userModel.create(body)
 	console.log("datos obtenidos despues de guardar el registro: ", responseData)
 
 	return response.send({ data: responseData })

@@ -1,5 +1,6 @@
 const models = {
-	userModule: require("../models/nosql/userSchema")
+	userModel: require("../models/nosql/userSchema"),
+	storageModel: require("../models/nosql/storageSchema")
 }
 
 

@@ -9,6 +9,9 @@ require("dotenv").config()
 // creamos la instancia del servidor
 const app = expres()
 
+// indicamos a express que puede exponer cosas publicas
+app.use(expres.static("storage"))
+
 // se especifica el puesto en el cual se levanta el servidor
 // const port = 3000; 
 // obtenemos el puerto de las variables de entorno

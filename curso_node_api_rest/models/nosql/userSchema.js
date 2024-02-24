@@ -2,7 +2,7 @@
 const mongoose = require("mongoose")
 
 // se declara el modelo
-const UserSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
 	// se declaran sus propiedades
 	{
 		name: {
@@ -27,4 +27,4 @@ const UserSchema = new mongoose.Schema(
 se exporta el modulo de forma de modelo,
 declarando el nombre de la tabla con el schema que se usara
 */
-module.exports = mongoose.model("users", UserSchema)
+module.exports = mongoose.model("users", userSchema)
