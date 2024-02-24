@@ -1,4 +1,6 @@
 const { userModel } = require("../models")
+const { handleHtppErrors } = require("../utils/handleErrors")
+const { matchedData } = require("express-validator")
 
 
 const getUsers = async (request, response) => {
@@ -18,16 +20,26 @@ const getUsers = async (request, response) => {
 
 
 const createUsers = async (request, response) => {
-	// obtenemos el body de la request 
-	// const body = request.body
+	try {
+		// obtenemos el body de la request 
+		// const body = request.body
 
-	// obtenemos por medio de desestructuracion el body del request
-	const { body } = request
-	console.log("datos obtenidos en el body: ", body)
-	const responseData = await userModel.create(body)
-	console.log("datos obtenidos despues de guardar el registro: ", responseData)
+		// obtenemos por medio de desestructuracion el body del request
+		// aqui viene todo lo que se manda en el request body, tenemos que limpiar para evitar datos malos
+		// const { body } = request
+		// console.log("datos obtenidos en el body: ", body)
 
-	return response.send({ data: responseData })
+		// limpiamos la data y hacemos que no se registre algo mal
+		const bodyClean = matchedData(request)
+
+		const responseData = await userModel.create(bodyClean)
+		console.log("datos obtenidos despues de guardar el registro: ", responseData)
+
+		return response.send({ data: responseData })
+	} catch (error) {
+		console.log("error", error.message)
+		handleHtppErrors(response, "Problemas al procesar la solicitud", 500, error.message)
+	}
 }
 
 module.exports = {
