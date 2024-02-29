@@ -19,6 +19,20 @@ const getUsers = async (request, response) => {
 }
 
 
+const getUser = async (request, response) => {
+	try {
+		request = matchedData(request)
+		const { id } = request
+		const data = await userModel.findById(id)
+		console.log("data de un usuario", data)
+		return response.send({data})
+	} catch (error) {
+		console.log("error", error.message)
+		handleHtppErrors(response, "Problemas al procesar la solicitud", 500, error.message)
+	}
+}
+
+
 const createUsers = async (request, response) => {
 	try {
 		// obtenemos el body de la request 
@@ -42,7 +56,25 @@ const createUsers = async (request, response) => {
 	}
 }
 
+const updateUser = async (request, response) => {
+	try {
+		const {id, ...body} = matchedData(request)
+
+		console.log("este es el id a actualizar ->", id, "body ->", body)
+		const data = await userModel.findByIdAndUpdate(id, body)
+		// const data = await userModel.findByIdAndUpdate({_id:id}, body) // podemos especificar mas si se desea
+		// const data = await userModel.findByIdAndUpdate({_id:id}, body, {new:true}) // podemos usar otro metodo llamada findOneAndUpdate
+		console.log("data update", data)
+		response.send({data})
+	} catch (error) {
+		console.log("error en el update", error.message)
+		handleHtppErrors(response, "Problemas al procesar la solicitud", 500, error.message)
+	}
+}
+
 module.exports = {
 	getUsers,
-	createUsers
+	getUser,
+	createUsers,
+	updateUser
 }

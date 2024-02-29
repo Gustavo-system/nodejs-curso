@@ -31,4 +31,11 @@ const createUserValidator = [
 	 */
 ]
 
-module.exports = {createUserValidator}
+const getOneUserValidator = [
+	check("id").exists().notEmpty().isMongoId(),
+	(request, response, next) => {
+		return validateResult(request, response, next)
+	}
+]
+
+module.exports = { createUserValidator, getOneUserValidator }

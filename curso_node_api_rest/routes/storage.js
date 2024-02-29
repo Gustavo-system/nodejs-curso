@@ -1,7 +1,6 @@
 const express = require("express")
 const uploadMiddleware = require("../utils/handleStorage")
 const { createStorage, getStorages } = require("../controllers/storageController")
-const { coustomHeader } = require("../middlewares/middleware")
 
 const router = express.Router()
 
