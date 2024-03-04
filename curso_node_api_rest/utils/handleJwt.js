@@ -3,7 +3,7 @@ const jsonwebtoken = require("jsonwebtoken")
 const JWT_SECRET = process.env.JWT_SECRET
 
 const tokenSign = async (user) => {
-	const sign = jsonwebtoken.sign({_id: user._id, role: user.role}, JWT_SECRET, {expiresIn: "1h"})
+	const sign = jsonwebtoken.sign({ _id: user._id, role: user.role }, JWT_SECRET, { expiresIn: "1h" })
 	console.log("token generado", sign)
 	return sign
 }
@@ -17,4 +17,4 @@ const verifyToken = async (token) => {
 	}
 }
 
-module.exports = {tokenSign, verifyToken}
+module.exports = { tokenSign, verifyToken }
