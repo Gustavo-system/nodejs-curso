@@ -14,6 +14,9 @@ const getUsers = async (request, response) => {
 
 	// obtenemos todos los registros con find({}) que es propio de mongoose
 	// forma corta
+	const { user } = request
+	console.log("la data recuperda del usuario en el service", user)
+	
 	const data = await userModel.find({})
 
 	console.log("consulta", data)
