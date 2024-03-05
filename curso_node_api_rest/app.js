@@ -2,6 +2,8 @@
 const expres = require("express")
 const cors = require("cors")
 const dbConnection = require("./config/mongo")
+const swaggerUI = require("swagger-ui-express")
+const openApiConfigration = require("./docs/swagger")
 
 // cargamos las variables de entorno
 require("dotenv").config()
@@ -22,6 +24,11 @@ app.use(cors())
 
 // se declara para poder aceptar json en la request body
 app.use(expres.json())
+
+/**
+ * Definimos la ruta de la documentacion
+ */
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(openApiConfigration))
 
 /**
  * hacemos uso de las rutas
