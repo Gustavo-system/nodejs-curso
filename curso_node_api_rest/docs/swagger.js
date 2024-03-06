@@ -18,7 +18,27 @@ const swaggerDefinition = {
 		}
 	],
 	components: {
+		securitySchemes: {
+			bearerAuth: {
+				type: "http",
+				scheme: "bearer"
+			}
+		},
 		schemas: {
+			login: {
+				type: "object",
+				required: ["email", "password"],
+				properties: {
+					email: {
+						type: "string",
+						example: "prueba@prueba.com"
+					},
+					password: {
+						type: "string",
+						example: "*****"
+					}
+				}
+			},
 			users: {
 				type: "object",
 				required: ["name", "email", "password"],
