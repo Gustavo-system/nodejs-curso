@@ -13,7 +13,7 @@ const login = async (request, response) => {
 		const user = await userModel.findOne({ email: request.email }).select('password name email role')
 		console.log("response user", user)
 
-		if (!user) return handleHtppErrors(response, "Usuario y/o password incorrectos", 400)
+		if (!user) return handleHtppErrors(response, "Usuario y/o password incorrectos", 404)
 
 		const isCorrectPassword = await compareEncrypt(request.password, user.password)
 

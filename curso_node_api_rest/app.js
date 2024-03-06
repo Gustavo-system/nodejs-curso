@@ -8,6 +8,9 @@ const openApiConfigration = require("./docs/swagger")
 // cargamos las variables de entorno
 require("dotenv").config()
 
+// obtenemos la variable de ambiente en que se esta ejecutando
+const ENV_NODE = process.env.ENV_NODE || 'dev'
+
 // creamos la instancia del servidor
 const app = expres()
 
@@ -45,9 +48,19 @@ app.use('/docs', swaggerUI.serve, swaggerUI.setup(openApiConfigration))
 app.use("/api/v1", require("./routes"))
 
 // corremos el servidor
-app.listen(port, () => {
-	// mosttramos un mensaje en consola si el servidor se inicio correctamente
-	console.log(`Servidor escuchando por el puesto: http://localhost/${port}`)
-})
+// app.listen(port, () => {
+// 	// mosttramos un mensaje en consola si el servidor se inicio correctamente
+// 	console.log(`Servidor escuchando por el puesto: http://localhost/${port}`)
+// })
+
+
+// se agregan estas lineas para hacer test
+if(ENV_NODE !== 'test'){
+	app.listen(port, () => {
+		console.log(`Servidor escuchando por el puesto: http://localhost/${port}`)
+	})
+}
 
 dbConnection()
+
+module.exports = app
