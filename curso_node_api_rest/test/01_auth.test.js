@@ -1,13 +1,14 @@
 const supertest = require("supertest")
 const app = require("../app")
 const { userModel } = require("../models")
+const { mongoose } = require("mongoose")
 
 
 /**
  * Esto se ejecutra despues de realizar todas las pruebas
  */
 // beforeAll(async () => {
-// 	await userModel.deleteMany()
+// 	await userModel.deleteMany({})
 // })
 
 describe("[AUTH] estas son las pruebas del /api/auth", () => {
@@ -46,4 +47,8 @@ describe("[AUTH] estas son las pruebas del /api/auth", () => {
 		expect(response.body).toHaveProperty("data.token")
 		expect(response.body).toHaveProperty("data.user")
 	})
+})
+
+afterAll(() => {
+	mongoose.connection.close()
 })
