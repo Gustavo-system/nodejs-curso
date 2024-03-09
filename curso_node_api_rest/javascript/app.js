@@ -1,5 +1,5 @@
 // importamos los paquetes que se requieren
-const expres = require("express")
+const express = require("express")
 const cors = require("cors")
 const dbConnection = require("./config/mongo")
 const swaggerUI = require("swagger-ui-express")
@@ -12,10 +12,10 @@ require("dotenv").config()
 const ENV_NODE = process.env.ENV_NODE || 'dev'
 
 // creamos la instancia del servidor
-const app = expres()
+const app = express()
 
 // indicamos a express que puede exponer cosas publicas
-app.use(expres.static("storage"))
+app.use(express.static("storage"))
 
 // se especifica el puesto en el cual se levanta el servidor
 // const port = 3000; 
@@ -26,7 +26,7 @@ const port = process.env.PORT || 3000
 app.use(cors())
 
 // se declara para poder aceptar json en la request body
-app.use(expres.json())
+app.use(express.json())
 
 /**
  * Definimos la ruta de la documentacion
