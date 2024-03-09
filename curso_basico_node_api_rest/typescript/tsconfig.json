@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"outDir": "./dist",
+		"experimentalDecorators": true,
+		"module": "commonjs",
+		"declaration": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"skipLibCheck": true,
+		"target": "es2017",
+	},
+	"include": ["./src/*"]
+}
