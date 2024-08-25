@@ -11,16 +11,16 @@ instalar nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 ```
 
-- uso de nvm
-	1. instalar una nueva version de node en nvm
-	```
-	nvm install <version-node>
-	```
-	2. cambiar la version de node
+- Uso de nvm
+instalar una nueva version de node en nvm
+```
+nvm install <version-node>
+```
+cambiar la version de node
 
-	```
-	nvm use <version-node>
-	```
+```
+nvm use <version-node>
+```
 
 
 ### Extensiones de VSCode
