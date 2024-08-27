@@ -5,11 +5,11 @@
 //const { v4: uuidv4 } = require('uuid');
 //const getAge = require('get-age')
 
-
+// cramos mejor nuestros modulos, en caso de que se tenga que actualizar la dependencia solo se haga en un lugar
 // const { getUuid } = require('./plugins/get-uuid.plugin')
 // const { getAge } = require('./plugins/get-age.plugin')
 
-// podemos reducir las lineas de importacion de arriba cuando es de una carpeta
+// podemos reducir las lineas de importacion de arriba cuando es de una misma carpeta
 //const { getUuid, getAge } = require('./plugins')
 
 // const buildPerson = ({ name, birthdate }) => {

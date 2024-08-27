@@ -12,7 +12,10 @@
 //const { getUserById } = require('./js-fundation/04-arrow-functions.js');
 
 // 05 factory functions
-const { buildMakePerson } = require('./js-fundation/05-factory-functions')
+// const { buildMakePerson } = require('./js-fundation/05-factory-functions')
+
+// 06 promesas
+const getPokemonById = require('./js-fundation/06-promises')
 
 
 // 01-importaciones
@@ -45,10 +48,17 @@ const { buildMakePerson } = require('./js-fundation/05-factory-functions')
 // });
 
 // 05 factory functions
-const { getUuid, getAge } = require('./js-fundation/plugins')
-const buildPerson = buildMakePerson(getUuid, getAge);
+// const { getUuid, getAge } = require('./js-fundation/plugins')
+// const buildPerson = buildMakePerson(getUuid, getAge);
 
-const data = { name: "papagallo", birthdate: "1999-01-01" }
-const person = buildPerson(data);
+// const data = { name: "papagallo", birthdate: "1999-01-01" }
+// const person = buildPerson(data);
 
-console.log(person)
+// console.log(person)
+
+
+// 06 promesas
+getPokemonById(4)
+	.then(pokemon => console.log(pokemon))
+	.catch(err => console.error(err))
+	.finally(() => console.log("fin de la promesa"))
